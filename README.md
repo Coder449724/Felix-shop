@@ -1,45 +1,15 @@
-const { Client, GatewayIntentBits, Partials, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events } = require('discord.js');
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages],
-  partials: [Partials.Channel]
-});
+# Holz MS Graz - Modern
 
-const TOKEN = process.env.BOT_TOKEN;
+Diese Website ist eine moderne, animierte Version der Holz MS Graz Homepage.
 
-client.once('ready', () => {
-  console.log(`Bot ist online als ${client.user.tag}`);
-});
+## Features
+- Responsives Design
+- Sanfte Scroll-Animationen
+- Moderner Farbverlauf-Hintergrund
 
-client.on('messageCreate', async message => {
-  if (message.content === '!shop') {
-    const row = new ActionRowBuilder()
-      .addComponents(
-        new ButtonBuilder()
-          .setCustomId('buy_sword')
-          .setLabel('Schwert kaufen')
-          .setStyle(ButtonStyle.Primary),
-        new ButtonBuilder()
-          .setCustomId('buy_shield')
-          .setLabel('Schild kaufen')
-          .setStyle(ButtonStyle.Secondary)
-      );
+## Deployment
+Die Website kann einfach auf GitHub gehostet und mit Vercel deployed werden.
 
-    await message.channel.send({ content: 'Willkommen im Shop! Wähle ein Item:', components: [row] });
-  }
-});
+## Kontakt
+Erstellt von Felix
 
-client.on(Events.InteractionCreate, async interaction => {
-  if (!interaction.isButton()) return;
-
-  const user = interaction.user;
-
-  if (interaction.customId === 'buy_sword') {
-    await interaction.reply({ content: 'Schwert wurde ausgewählt! Check deine DMs.', ephemeral: true });
-    user.send('Danke für deinen Kauf: Schwert! ⚔️');
-  } else if (interaction.customId === 'buy_shield') {
-    await interaction.reply({ content: 'Schild wurde ausgewählt! Check deine DMs.', ephemeral: true });
-    user.send('Danke für deinen Kauf: Schild! 🛡️');
-  }
-});
-
-client.login(TOKEN);
