@@ -2,9 +2,61 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Meine Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holz MS Graz - Modern</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>Hallo, das ist meine erste Website!</h1>
+  <header class="header">
+    <div class="header-top">
+      <p>📞 +43 316 872-6955 | +43 316 872-6957 | ✉️ ms.strassgang@ms-strassgang.edu.graz.at</p>
+    </div>
+    <div class="header-main">
+      <h1>Holz MS Graz</h1>
+      <nav class="navbar">
+        <a href="#">Start</a>
+        <a href="#schule">Unsere Schule</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Willkommen an der Holz MS Graz</h2>
+    <p>Design, Technik und Innovation – kreativ lernen!</p>
+  </section>
+
+  <section id="schule" class="info-section">
+    <h3>Unsere Schwerpunkte</h3>
+    <ul>
+      <li>🌲 Holz und Design</li>
+      <li>🔬 Technik & MINT</li>
+      <li>🎨 Kreatives Arbeiten</li>
+    </ul>
+  </section>
+
+  <section id="projekte" class="info-section">
+    <h3>Projekte & Aktivitäten</h3>
+    <p>Von Werkstätten bis digitalen Innovationen – Schüler:innen gestalten Zukunft.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Holz MS Graz – erstellt von Felix | <a href="https://discord.gg/qnRQHJAp6W" target="_blank">Mein Discord</a></p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
